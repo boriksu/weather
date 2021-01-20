@@ -1,0 +1,5 @@
+export const FETCHING_SUCCESS = Symbol('FETCHING_SUCCESS')
+export const FETCHING_STARTED = Symbol('FETCHING_STARTED')
+export const FETCHING_FAILURE = Symbol('FETCHING_FAILURE')
+
+
