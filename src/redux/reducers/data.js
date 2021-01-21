@@ -1,9 +1,10 @@
-import { FETCHING_FAILURE, FETCHING_STARTED, FETCHING_SUCCESS } from '../action-type'
+import { FETCHING_FAILURE, FETCHING_STARTED, FETCHING_SUCCESS, FILTER_ALL, FILTER_CLOUDY } from '../action-type'
 
 const initialState={
     dayList: null,
     fetching: false,
-    error: null
+    error: null,
+    filter: FILTER_ALL
 }
 
 export default (state = initialState, {type, payload }) => {

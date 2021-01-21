@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import DayList from './dayList'
 import { addData } from '../redux/actions'
 import { connect } from 'react-redux'
+import Filter from './filter'
 
 
 const App = (props) => {
@@ -12,10 +13,13 @@ const App = (props) => {
   })
 
   return (
-  <div>
-    <h1>To do list from</h1>
+  <main>
+    <Filter/>
+    <br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/>
     <DayList/>
-  </div>
+  </main>
   )
 }
 
