@@ -1,4 +1,5 @@
 import { FETCHING_FAILURE, FETCHING_STARTED, FETCHING_SUCCESS } from '../action-type'
+import { setCurrent } from './current'
 
 export const addData = () => {
   return dispatch => {
@@ -11,6 +12,7 @@ export const addData = () => {
         }).then(json => {
       console.log('succeess1')
         dispatch(addDataSuccess(json.data));
+        dispatch(setCurrent(json.data[0]))
         }).catch(err => {
           console.log('Ошибка загрузки: ' + err.message);
           dispatch(addDataFailure(err.message));

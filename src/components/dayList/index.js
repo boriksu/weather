@@ -4,21 +4,24 @@ import {bindActionCreators} from "redux";
 import "./../../styles2/index.scss"
 import { FILTER_ALL, FILTER_CLOUDY, FILTER_SUNNY } from '../../redux/action-type'
 import Day from '../day'
+import { setCurrent } from '../../redux/actions/current'
 
-export const DayList = ({dayList}) => {
+export const DayList = ({dayList, setCurrent}) => {
+
+  // dayList && setCurrent(dayList[0])
         return (
           <div className="forecast">
                 {
                     dayList != null && dayList.map((day) => {
-                        console.log("###DAY    ", day)
+                        // console.log("###DAY    ", day)
                         return <Day day = {day}/>
                     })
                 }
             </div>)
 }
 
-const getFilter = (state) => {
-  const { dayList, filter } = state.days
+const getFilter = (state, dayList) => {
+  const { filter } = state.days
   if (dayList == null)
     return null
   switch (filter) {
@@ -33,20 +36,28 @@ const getFilter = (state) => {
   }
 }
 
+const getFilterTemp = (state) => {
+  const { min, max } = state.days.filterTemp
+  const { dayList } = state.days
+  if (max && min)
+      return dayList.filter(({temperature}) => temperature >= min && temperature <= max)
+  else if (max)
+    return dayList.filter(({temperature}) => temperature <= max)
+  else if (min)
+    return dayList.filter(({temperature}) => temperature >= min)
+  else
+    return dayList
+}
+
 function mapStateToProps(state) {
-  // console.log('#state', state)
+  const list = getFilterTemp(state)
   return {
-    dayList: getFilter(state)
+    dayList: getFilter(state, list)
   }
 }
 
-
-function needed () {
-    console.log('#needed_dispatch')
-}
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    needed
+    setCurrent
 }, dispatch)
 
 

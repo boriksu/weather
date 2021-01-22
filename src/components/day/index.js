@@ -7,17 +7,19 @@ import cn from 'classnames';
 
 
 const date = (day) => {
-  var moment = require('moment');
+  const moment = require('moment');
   moment.locale('ru')
   return moment(day).format('dddd');
 }
 
-const Day = ({day}) => {
+const Day = ({day, current}) => {
+  let style = 'day ' + day.type
+  // if (current.day === day.day) {
+  // //   style = style + ' selected'
+  // // }
+  // console.log(current.day, day.day)
   return (
-            <div className={cn(day.type === 'sunny' && "day sunny",
-              day.type === 'cloudy' && "day cloudy",
-              day.type === 'rainy' && "day rainy",
-              )}>
+            <div className={style}>
               <p>{date(day.day)}</p>
               <span>{day.temperature}</span>
             </div>
@@ -26,6 +28,12 @@ const Day = ({day}) => {
 
 Day.propTypes = {
   day : PropTypes.object.isRequired
+}
+
+function mapStateToProps(state) {
+  return {
+    current: state.currentDay.current
+  }
 }
 
 function needed () {
@@ -37,4 +45,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 }, dispatch)
 
 
-export default connect(null, mapDispatchToProps)(Day)
+export default connect(mapStateToProps, mapDispatchToProps)(Day)
