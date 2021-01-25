@@ -9,7 +9,7 @@ import CurrentDay from './currentDay'
 const App = (props) => {
 
   useEffect(() => {
-    console.log("##useEffect")
+    // console.log("##useEffect")
     props.addData()
   })
 
@@ -21,6 +21,12 @@ const App = (props) => {
   </main>
   )
 }
+
+// function mapStateToProps(state) {
+//   return {
+//     current: state.currentDay.current
+//   }
+// }
 
 const mapDispatchToProps =  {
   addData

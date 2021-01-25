@@ -1,9 +1,10 @@
 import {
-  CURRENT
+  CURRENT, CURRENT_DROP,
 } from '../action-type'
 
 const initialState={
-  current: null
+  current: null,
+  currentDrop: false
 }
 
 export default (state = initialState, {type, payload }) => {
@@ -13,6 +14,11 @@ export default (state = initialState, {type, payload }) => {
         ...state,
         current: payload
       }
+    // case CURRENT_DROP:
+    //   return {
+    //     ...state,
+    //     currentDrop: !state.currentDrop
+    //   }
     default:
       return state
   }

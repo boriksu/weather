@@ -8,16 +8,25 @@ import { setCurrent } from '../../redux/actions/current'
 
 export const DayList = ({dayList, setCurrent}) => {
 
+  // console.log("#empty", !dayList)
   // dayList && setCurrent(dayList[0])
-        return (
-          <div className="forecast">
-                {
-                    dayList != null && dayList.map((day) => {
-                        // console.log("###DAY    ", day)
-                        return <Day day = {day}/>
-                    })
-                }
-            </div>)
+  if (dayList && dayList.length === 0) {
+    // setCurrent(null)
+    // console.log("#empty", dayList)
+    return (
+      <div className="forecast">
+      <p className="message">По заданным критериям нет доступных дней!</p>
+    </div>)
+  }
+  return (
+    <div className="forecast">
+          {
+              dayList != null && dayList.map((day) => {
+                  // console.log("###DAY    ", day)
+                  return <Day day = {day}/>
+              })
+          }
+      </div>)
 }
 
 const getFilter = (state, dayList) => {

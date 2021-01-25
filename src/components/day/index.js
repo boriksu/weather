@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import PropTypes from 'prop-types'
 import "./../../styles2/index.scss"
-import cn from 'classnames';
+import { setCurrent } from '../../redux/actions/current'
 
 
 const date = (day) => {
@@ -12,14 +12,18 @@ const date = (day) => {
   return moment(day).format('dddd');
 }
 
-const Day = ({day, current}) => {
+const Day = ({day, current, setCurrent}) => {
   let style = 'day ' + day.type
-  // if (current.day === day.day) {
-  // //   style = style + ' selected'
-  // // }
-  // console.log(current.day, day.day)
+  if (current && current.day === day.day) {
+    style = style + ' selected'
+  }
+
+  const addFilterHandle = () => setCurrent(day)
+
   return (
-            <div className={style}>
+            <div className={style}
+                 onClick={addFilterHandle}
+            >
               <p>{date(day.day)}</p>
               <span>{day.temperature}</span>
             </div>
@@ -36,12 +40,8 @@ function mapStateToProps(state) {
   }
 }
 
-function needed () {
-  console.log('#needed_dispatch')
-}
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  needed
+  setCurrent
 }, dispatch)
 
 

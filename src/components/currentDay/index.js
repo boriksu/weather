@@ -7,7 +7,7 @@ const CurrentDay = ({day}) => {
   const moment = require('moment');
 
   if (day) {
-    console.log("DAY", day)
+    // console.log("DAY", day)
     return (
       <div>
       <div className="head">
@@ -37,7 +37,7 @@ const CurrentDay = ({day}) => {
 }
 
 function mapStateToProps(state) {
-  console.log('#stateCURRENT', state)
+  // console.log('#stateCURRENT', state)
   return {
     day: state.currentDay.current
   }

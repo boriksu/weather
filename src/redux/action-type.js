@@ -9,4 +9,5 @@ export const FILTER_MIN = Symbol('FILTER_MIN')
 export const FILTER_MAX = Symbol('FILTER_MAX')
 export const FILTER_DROP = Symbol('FILTER_MAX')
 
+export const CURRENT_DROP = Symbol('CURRENT_DROP')
 export const CURRENT = Symbol('CURRENT')
