@@ -6,12 +6,12 @@ import { FILTER_ALL, FILTER_CLOUDY, FILTER_SUNNY } from '../../redux/action-type
 import Day from '../day'
 import { setCurrent } from '../../redux/actions/current'
 
-export const DayList = ({dayList, setCurrent}) => {
+export const DayList = ({dayList, current, setCurrent}) => {
 
   // console.log("#empty", !dayList)
   // dayList && setCurrent(dayList[0])
   if (dayList && dayList.length === 0) {
-    // setCurrent(null)
+    current && setCurrent(null)
     // console.log("#empty", dayList)
     return (
       <div className="forecast">
@@ -61,7 +61,8 @@ const getFilterTemp = (state) => {
 function mapStateToProps(state) {
   const list = getFilterTemp(state)
   return {
-    dayList: getFilter(state, list)
+    dayList: getFilter(state, list),
+    current: state.currentDay.current
   }
 }
 
