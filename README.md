@@ -7,5 +7,6 @@ The task of the project is to implement an advanced weather widget.
 npm install
 npm start
 ```
-For more information look Техническое_задание.pdf
+For more information look (/Техническое_задание.pdf)
+
 ![screenshot](/screen/ScreenShot.png?raw=true)
