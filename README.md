@@ -1,3 +1,3 @@
 # weather
 
-![screenshot](/screens/ScreenShot.png?raw=true)
+![screenshot](/screen/ScreenShot.png?raw=true)
